@@ -1,0 +1,45 @@
+[build-system]
+requires = [
+    "setuptools >= 61.2",
+    "setuptools_scm[toml] >= 6.2"
+]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools_scm]
+# Presence of this section activates setuptools_scm, even though it's empty
+
+[project]
+name = "ebrick_adder"
+description = "ebrick-demo with integrated HLS 1-bit Adder Chiplet"
+version = "0.1.0"
+dependencies = [
+    "switchboard-hw >= 0.0.39",
+    "siliconcompiler >= 0.25.0", #NOT VERSION 35.0 AND AFTER 
+    "umi >= 0.1.0, < 0.2.0",
+    "lambdalib >= 0.2.9, < 0.2.10"
+]
+
+[project.optional-dependencies]
+# Test dependencies.
+test = [
+    "flake8 == 7.1.1",
+    "tclint == 0.3.2"
+]
+
+[tool.setuptools]
+include-package-data = true
+packages = [
+    "ebrick_demo"
+]
+
+[tool.tclint]
+exclude = [
+    'build/',
+    'ebrick/build/'
+]
+
+[tool.tclint.style]
+allow-aligned-sets = true
+line-length = 80
+indent = 4
+max-blank-lines = 1
