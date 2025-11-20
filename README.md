@@ -37,7 +37,7 @@ Add the new RTL source code into the `rtl/` folder. The component must expose a 
 Create an "ebrick core" wrapper (e.g., `adder_core.v`) to adapt the RTL to the ebrick ecosystem. This wrapper serves as a protocol bridge between the system's UMI interface and your component's native interface. Depending on the component's role, instantiate the appropriate converter: use `umi2axilite` if your component acts as a Slave (like the adder), or `axilite2umi` if it acts as a Master (like a processor).
 
 **Step 3: Define the Memory Map**<br />
-Open `ebrick_memory_map.vh` and define a unique 16-bit Chip ID (CHIPID) and the corresponding address range for the new component.
+Open `ebrick_memory_map.vh` (and `ebrick_memory_map.h`) and define a unique 16-bit Chip ID (CHIPID) and the corresponding address range for the new component.
 
 **Step 4: Update the Build Script**<br />
 Modify `ebrick.py` to include the new source files. Use the `chip.input()` command to register both the new core wrapper and the original RTL files.
